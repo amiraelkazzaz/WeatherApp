@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, jsonify
 import requests
 import sqlite3
@@ -6,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Replace with your OpenWeatherMap API key
-API_KEY = "your_openweathermap_api_key"
+API_KEY = "eb05fa531c59fea8adb4a4bfe8d45c7e"
 
 # SQLite database path
 DATABASE = "weather.db"
