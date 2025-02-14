@@ -1,0 +1,60 @@
+---
+- name: Deploy Docker container on CentOS
+  hosts: all
+  become: yes
+  vars:
+    docker_users:
+      - vagrant
+  tasks:
+    - name: Remove Podman if installed
+      yum:
+        name:
+          - podman
+          - podman-docker
+        state: absent
+
+    - name: Install required dependencies
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+
+    - name: Add Docker repository
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install Docker
+      yum:
+        name: docker-ce
+        state: latest
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add user to Docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Pull Docker image
+      docker_image:
+        name: mirahatem/simple-web-app:{{ build_id }}
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: webapp
+        image: mirahatem/simple-web-app:{{ build_id }}
+        ports:
+          - "5000:5000"
+        state: started
+
+
+
