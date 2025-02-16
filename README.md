@@ -141,29 +141,7 @@ Access it via:
 
 | Application Homepage | Jenkins Pipeline |
 |----------------------|------------------|
-| ![App](images/.png) | ![Jenkins](screenshots/jenkins_pipeline.png) |
-
----
-
-## 🤝 Contributing
-
-Contributions are **welcome**! To contribute:
-
-1. **Fork** the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature/new-feature
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push the branch and open a pull request:
-   ```bash
-   git push origin feature/new-feature
-   ```
-
-Please ensure your contributions follow the **project's coding standards** and include appropriate **tests**.
+| ![App](images/192.168.56.14:5000.png images/192.168.56.15:5000.png ) | ![Jenkins](images/jenkins.png) |
 
 ---
 
@@ -177,20 +155,3 @@ This project was built using:
 - **OpenWeatherMap API**
 ```
 
----
-
-### 3. Save and Exit Nano:
-- Press `CTRL + X`
-- Press `Y` (Yes) to save
-- Press `Enter` to confirm
-
----
-
-### 4. Push the README.md file to GitHub:
-```bash
-git add README.md
-git commit -m "Updated README file with setup instructions"
-git push origin main
-```
-
-Now, your **README.md** file is pushed to GitHub! 🚀
