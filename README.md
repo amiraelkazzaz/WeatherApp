@@ -1,9 +1,4 @@
-# WeatherApp
-Creating a detailed and professional **README** file is essential for documenting your project, making it easier for others (and yourself) to understand and use. Below is an example of a well-structured README file for your Flask-Docker-Jenkins-Ansible project. I'll also explain how to insert pictures into the README.
-
----
-
-### **README.md**
+**README.md**
 
 ```markdown
 # WeatherApp Deployment Pipeline
@@ -144,9 +139,10 @@ The Jenkins pipeline consists of the following stages:
 ## Usage
 
 Once the pipeline completes successfully, the application will be deployed on the Vagrant machines. Access it via:
-```
-http://192.168.56.101:5000
-http://192.168.56.102:5000
+
+http://192.168.56.15:5000/
+http://192.168.56.14:5000/
+>>>>>>> 7bf20b9 (commit images)
 ```
 
 You can interact with the application by:
@@ -160,13 +156,12 @@ You can interact with the application by:
 Below are screenshots demonstrating the project setup and functionality:
 
 ### 1. Application Homepage
+<<<<<<< HEAD
 ![Application Homepage](images/192.168.56.14:5000.png ,images/192.168.56.15:5000.png)
 *The Flask application's homepage.*
 
 ### 2. Jenkins Pipeline
 ![Jenkins Pipeline](images/jenkins.png)
-*The Jenkins pipeline executing the deployment process.*
-
 ## Acknowledgments
 
 - [Flask](https://flask.palletsprojects.com/)
@@ -174,4 +169,4 @@ Below are screenshots demonstrating the project setup and functionality:
 - [Jenkins](https://www.jenkins.io/)
 - [Ansible](https://www.ansible.com/)
 - [OpenWeatherMap API](https://openweathermap.org/api)
-```
+
