@@ -209,9 +209,9 @@ Once the pipeline completes, the application is deployed at:
 ---
 ## 🖼️ Screenshots
 
-| Application from first machine  | Application from second  machine  | Jenkins>
-|-------------------------------- | --------------------------------- |-------->
-|![App](images/192.168.56.14:5000..png)|![App](images/192.168.56.15:5000.png) |>
+| Application from first machine  | Application from second  machine  | Jenkins
+|-------------------------------- | --------------------------------- |-----------------
+|![App](images/192.168.56.14:5000..png)|![App](images/192.168.56.15:5000.png) |![jenkins](images/jenkins.png)
 
 ---
 
@@ -225,7 +225,3 @@ This project was built using:
 - **Jenkins**
 - **Ansible**
 - **OpenWeatherMap API**
-```
-
----
-
