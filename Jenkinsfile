@@ -45,8 +45,8 @@ pipeline {
             steps {
                 script {
                     echo "Running Ansible Playbook..."
-                    sh "chmod 600 ./home/mira/Downloads/m01/virtualboxprivate_key"
-                    sh "chmod 600 ./home/mira/Downloads/m01/virtualbox/private_key"
+                    sh "chmod 600 ./m01/virtualbox/private_key"
+                    sh "chmod 600 ./m02/virtualbox/private_key"
                     sh "export ANSIBLE_HOST_KEY_CHECKING=False"
                     sh "ansible-playbook -i inventory.ini playbook.yml --extra-vars \"build_id=${BUILD_ID}\""
                 }
