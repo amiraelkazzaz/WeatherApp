@@ -1,14 +1,10 @@
-**README.md**
-
-```markdown
 # WeatherApp Deployment Pipeline
 
-This project demonstrates a complete CI/CD pipeline for deploying a Flask-based weather application using Docker, Jenkins, and Ansible. The application fetches weather data from the OpenWeatherMap API and stores it in a SQLite database.
+This project demonstrates a complete **CI/CD pipeline** for deploying a Flask-based weather application using **Docker, Jenkins, and Ansible**. The application fetches weather data from the OpenWeatherMap API and stores it in a **SQLite database**.
 
 ---
 
-## Table of Contents
-
+## 📌 Table of Contents
 1. [Project Overview](#project-overview)
 2. [Prerequisites](#prerequisites)
 3. [Setup Instructions](#setup-instructions)
@@ -16,26 +12,27 @@ This project demonstrates a complete CI/CD pipeline for deploying a Flask-based 
 5. [Usage](#usage)
 6. [Screenshots](#screenshots)
 7. [Contributing](#contributing)
+8. [Acknowledgments](#acknowledgments)
 
 ---
 
-## Project Overview
+## 🌍 Project Overview
 
-The WeatherApp is a simple web application built with Flask that:
-- Fetches weather data for a given city using the OpenWeatherMap API.
-- Stores the fetched data in a SQLite database.
-- Provides RESTful endpoints to interact with the stored data.
+**WeatherApp** is a simple **Flask** web application that:
+- Fetches weather data for a given city using the **OpenWeatherMap API**.
+- Stores the fetched data in a **SQLite database**.
+- Provides **RESTful endpoints** to interact with the stored data.
 
-The CI/CD pipeline automates the following tasks:
-1. Cloning the repository from GitHub.
-2. Building and pushing a Docker image to Docker Hub.
-3. Deploying the application to Vagrant-managed machines using Ansible.
+### 🚀 CI/CD Pipeline Stages
+1. Clone the repository from GitHub.
+2. Build and push a **Docker image** to Docker Hub.
+3. Deploy the application to **Vagrant-managed machines** using Ansible.
 
 ---
 
-## Prerequisites
+## ⚙️ Prerequisites
 
-Before setting up the pipeline, ensure you have the following installed on your machine:
+Ensure you have the following installed on your machine:
 - **Git**: For version control.
 - **Docker**: To containerize the application.
 - **Vagrant & VirtualBox**: To create virtual machines for deployment.
@@ -49,49 +46,43 @@ Additionally, you will need:
 
 ---
 
-## Setup Instructions
+## 🛠️ Setup Instructions
 
-### 1. Clone the Repository
-Clone this repository to your local machine:
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/amiraelkazzaz/WeatherApp.git
 cd WeatherApp
 ```
 
-### 2. Install Dependencies
-Install the required dependencies for local development:
+### 2️⃣ Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure OpenWeatherMap API Key
-Replace the placeholder `your_openweathermap_api_key` in `app.py` with your actual API key:
+### 3️⃣ Configure OpenWeatherMap API Key
+Replace the placeholder `your_openweathermap_api_key` in **app.py** with your actual API key:
 ```python
 API_KEY = "your_openweathermap_api_key"
 ```
 
-### 4. Build and Test Locally
-Build the Docker image and run the container locally:
+### 4️⃣ Build and Test Locally
 ```bash
 docker build -t weather-app .
 docker run -p 5000:5000 weather-app
 ```
-Access the application at:
-```
-http://localhost:5000
-```
+Access the application at:  
+🔗 **http://localhost:5000**
 
-### 5. Push the Docker Image to Docker Hub
-Tag and push the Docker image to Docker Hub:
+### 5️⃣ Push the Docker Image to Docker Hub
 ```bash
 docker tag weather-app your-dockerhub-username/weather-app:v1
 docker push your-dockerhub-username/weather-app:v1
 ```
 
-### 6. Set Up Vagrant Machines
-Create two Vagrant machines with low specs:
+### 6️⃣ Set Up Vagrant Machines
+
+Create a `Vagrantfile` and configure two virtual machines:
 ```ruby
-# Vagrantfile
 Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "ubuntu/focal64"
@@ -109,64 +100,97 @@ Start the machines:
 vagrant up
 ```
 
-### 7. Configure Jenkins
-Set up a Jenkins pipeline to automate the deployment process:
-1. Install Jenkins and required plugins (Git, Docker Pipeline, Ansible).
-2. Add credentials for GitHub and Docker Hub.
-3. Create a new pipeline job and configure it to use the `Jenkinsfile`.
+### 7️⃣ Configure Jenkins
+- Install **Jenkins** and required plugins (**Git, Docker Pipeline, Ansible**).
+- Add credentials for **GitHub** and **Docker Hub**.
+- Create a **new pipeline job** and configure it to use the `Jenkinsfile`.
 
 ---
 
-## Pipeline Workflow
+## 🔄 Pipeline Workflow
 
-The Jenkins pipeline consists of the following stages:
+### 1️⃣ Clone Repository
+   - Pulls the latest code from **GitHub**.
 
-1. **Clone Repository**:
-   - Pulls the latest code from the GitHub repository.
+### 2️⃣ Build Docker Image
+   - Builds a **Docker image** using the `Dockerfile`.
 
-2. **Build Docker Image**:
-   - Builds a Docker image using the `Dockerfile`.
+### 3️⃣ Push Docker Image to Docker Hub
+   - Logs in to **Docker Hub** and pushes the image with a unique tag.
 
-3. **Push Docker Image to Docker Hub**:
-   - Logs in to Docker Hub and pushes the image with a unique tag (`BUILD_ID`).
-
-4. **Deploy with Ansible**:
-   - Runs an Ansible playbook to deploy the application on Vagrant-managed machines.
-   - Installs Docker, pulls the image, and runs the container.
+### 4️⃣ Deploy with Ansible
+   - Runs an **Ansible playbook** to deploy the application on Vagrant-managed machines.
+   - Installs **Docker**, pulls the image, and runs the container.
 
 ---
 
-## Usage
+## 📌 Usage
 
-Once the pipeline completes successfully, the application will be deployed on the Vagrant machines. Access it via:
+Once the pipeline completes successfully, the application will be deployed on the Vagrant machines.  
+Access it via:
+- 🔗 **http://192.168.56.15:5000/**
+- 🔗 **http://192.168.56.14:5000/**
 
-http://192.168.56.15:5000/
-http://192.168.56.14:5000/
->>>>>>> 7bf20b9 (commit images)
+### 🖥️ Available Endpoints:
+- `/weather` → Fetch weather data.
+- `/cities` → Retrieve stored city weather data.
+
+---
+
+## 🖼️ Screenshots
+
+| Application Homepage | Jenkins Pipeline |
+|----------------------|------------------|
+| ![App](images/.png) | ![Jenkins](screenshots/jenkins_pipeline.png) |
+
+---
+
+## 🤝 Contributing
+
+Contributions are **welcome**! To contribute:
+
+1. **Fork** the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/new-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push the branch and open a pull request:
+   ```bash
+   git push origin feature/new-feature
+   ```
+
+Please ensure your contributions follow the **project's coding standards** and include appropriate **tests**.
+
+---
+
+## 🙌 Acknowledgments
+
+This project was built using:
+- **Flask**
+- **Docker**
+- **Jenkins**
+- **Ansible**
+- **OpenWeatherMap API**
 ```
 
-You can interact with the application by:
-- Searching for weather data using the homepage form.
-- Accessing RESTful endpoints like `/weather` and `/cities`.
+---
+
+### 3. Save and Exit Nano:
+- Press `CTRL + X`
+- Press `Y` (Yes) to save
+- Press `Enter` to confirm
 
 ---
 
-## Screenshots
+### 4. Push the README.md file to GitHub:
+```bash
+git add README.md
+git commit -m "Updated README file with setup instructions"
+git push origin main
+```
 
-Below are screenshots demonstrating the project setup and functionality:
-
-### 1. Application Homepage
-<<<<<<< HEAD
-![Application Homepage](images/192.168.56.14:5000.png ,images/192.168.56.15:5000.png)
-*The Flask application's homepage.*
-
-### 2. Jenkins Pipeline
-![Jenkins Pipeline](images/jenkins.png)
-## Acknowledgments
-
-- [Flask](https://flask.palletsprojects.com/)
-- [Docker](https://www.docker.com/)
-- [Jenkins](https://www.jenkins.io/)
-- [Ansible](https://www.ansible.com/)
-- [OpenWeatherMap API](https://openweathermap.org/api)
-
+Now, your **README.md** file is pushed to GitHub! 🚀
