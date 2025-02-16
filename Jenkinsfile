@@ -7,7 +7,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the Git repository using the GitHub token
-                git url: "https://github.com/amiraelkazzaz/WeatherApp.git", branch: 'main', credentialsId: 'github-token'
+                git url: "https://github.com/amiraelkazzaz/WeatherApp.git", branch: 'main', credentialsId: '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'
             }
         }
         stage('Build Docker Image') {
