@@ -7,7 +7,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the Git repository using the GitHub token
-                git url: "https://github.com/amiraelkazzaz/WeatherApp.git", branch: 'main', credentialsId: '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'
+                git url: "https://github.com/amiraelkazzaz/WeatherApp.git", branch: 'main', credentialsId: '630e80e2-1717-4110-b68d-714c808ca513'
             }
         }
         stage('Build Docker Image') {
@@ -16,9 +16,9 @@ pipeline {
                     // Use Docker credentials securely
                     withCredentials([
                         usernamePassword(
-                            credentialsId: 'dckr_pat_d8L3lQQgyVCMNRPlfZhB7jifA-8',
-                            usernameVariable: 'DOCKER_USERNAME',
-                            passwordVariable: 'DOCKER_PASSWORD'
+                            credentialsId: 'docker-hub-credentials',
+                            usernameVariable: 'mirahatem',
+                            passwordVariable: 'dckr_pat_3a3oXzLpxDyY9p3A0Td2oGRE9tQ'
                         )
                     ]) {
                         // Build the Docker image with the build ID as the tag
@@ -33,12 +33,12 @@ pipeline {
                     // Log in to Docker Hub and push the image
                     withCredentials([
                         usernamePassword(
-                            credentialsId: 'dckr_pat_d8L3lQQgyVCMNRPlfZhB7jifA-8',
-                            usernameVariable: 'DOCKER_USERNAME',
-                            passwordVariable: 'DOCKER_PASSWORD'
+                            credentialsId: 'docker-hub-credentials',
+                            usernameVariable: 'mirahatem',
+                            passwordVariable: 'dckr_pat_3a3oXzLpxDyY9p3A0Td2oGRE9tQ'
                         )
                     ]) {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dckr_pat_d8L3lQQgyVCMNRPlfZhB7jifA-8') {
+                        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                             docker.image("mirahatem/simple-web-app:${BUILD_ID}").push()
                         }
                     }
