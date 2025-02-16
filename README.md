@@ -139,9 +139,9 @@ Access it via:
 
 ## 🖼️ Screenshots
 
-| Application Homepage | Jenkins Pipeline |
-|----------------------|------------------|
-| ![App](images/192.168.56.14:5000.png images/192.168.56.15:5000.png ) | ![Jenkins](images/jenkins.png) |
+| Application from first machine |Application from second  machine | Jenkins Pipeline |
+|--------------------------------|-------------------------------|-----------
+|![App](images/192.168.56.14:5000.png)|![App](images/192.168.56.15:5000.png) | ![Jenkins](images/jenkins.png) |
 
 ---
 
